@@ -1,5 +1,3 @@
-// main.rs
-
 #![no_std]
 #![no_main]
 #![feature(custom_test_frameworks)]
@@ -12,25 +10,21 @@ use f_os::println;
 // Entry point
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    println!("[fOS ENTRY POINT LOADED]");
-    
-    #[cfg(test)]
     test_main();
 
-    loop{}
-}
-
-// Panic
-#[cfg(not(test))]
-#[panic_handler]
-fn panic(info: &PanicInfo) -> ! {
-    println!("{}", info);
     loop {}
 }
 
-// Panic test
-#[cfg(test)]
+// Tests
+#[test_case]
+fn test_println() {
+    println!("[VGA Buffer - Simple Test]");
+}
+
+// Panic
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    f_os::test_panic_handler(info)
+    f_os::test_panic_handler(info);
+
+    loop {}
 }

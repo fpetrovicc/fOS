@@ -1,6 +1,6 @@
 [package]
 name = "f_os"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["Filip Petrovic <filippetrovic603@gmail.com>"]
 edition = "2018"
 
@@ -11,6 +11,10 @@ edition = "2018"
 
 #[profile.release]
 #panic = "abort"
+
+[[test]]
+name = "should_panic"
+harness = false
 
 [dependencies]
 bootloader = "0.9.8"
