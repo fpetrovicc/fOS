@@ -56,34 +56,11 @@ where
     }
 }
 
-// Test cases - MOVE TO VGA BUFFER MODULE
+// Test cases
 #[test_case]
 fn trivial_assertion() {
-    assert_eq!(1, 1);    
+    assert_eq!(1, 1)
 }
-
-#[test_case]
-fn test_println_simple() {
-    println!("[Simple printing test - output]")
-}
-
-#[test_case]
-fn test_println_many() {
-    for _ in 0..200 {
-        println!("[Stress printing test - output]")
-    }
-}
-
-#[test_case]
-fn test_println_output() {
-    let s = "[Example test string that fits on a single line]";
-    println!("{}", s);
-    for (i, c) in s.chars().enumerate() {
-        let screen_char = WRITER.lock().buffer.chars[BUFFER_HEIGHT - 2][i].read();
-        assert_eq!(char::from(screen_char.ascii_character), c);
-    }
-}
-
 
 // Panic test
 #[cfg(test)]
